@@ -11,9 +11,8 @@
  * file per style scope.
  *
  *= require companies
- *= require home
- *= require projects
- *= require reports
  
+ *= require reports
+
 
  */
