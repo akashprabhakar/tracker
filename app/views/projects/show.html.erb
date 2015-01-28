@@ -1,0 +1,33 @@
+<h1 class="page-header"><%= @project.name %></h1>
+
+
+<p>Company : <%= @project.company.name %></p>
+<p>Deafult Rate : <%= @project.default_rate %></p>
+<p>Slug : <%= @project.slug %></p>
+<p>Owner : <%= @project.user %></p>
+
+<h4 style="text-align:right"><%= link_to 'Edit Project',edit_project_path %></h4>
+
+
+<% if @project.reports.size > 0 %>
+<table class="table table-bordered table-hover " id="aks">
+	<tbody>
+		<tr>
+			<th> View </th>
+			<th> User </th>
+			<th> Project </th>
+			<th> Date/Time </th>
+			<th> Hours </th>
+		</tr>
+		
+		<%= render partial: "reports/report", collection: @project.reports %>
+			
+		
+	</tbody>
+</table>
+<% else %>
+<p> No Reports Generated Yet..</p>
+<% end %>
+<% content_for :aside do%>
+	<% render 'sidebar' %>
+<% end %>

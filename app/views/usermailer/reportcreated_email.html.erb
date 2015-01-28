@@ -1,0 +1,7 @@
+
+    <h1>Report Created</h1>
+    <p>User <%= @Report.user %> posted a Report item:
+    <br><%= @Report.created_at.strftime('%m/%d/%Y %I:%M %p') %>
+    <br>Project: <%= @Report.project.name %>
+	<br>Hours: <%= @Report.hours %>
+	<br>Notes: <%= @Report.notes %></p>

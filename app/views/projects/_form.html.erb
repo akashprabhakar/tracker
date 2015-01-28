@@ -1,0 +1,41 @@
+<% if @project.errors.any? %>
+	<div id="errors">
+		<p>Please correct the following <%= pluralize(@project.errors.count, "error") %>:</p>
+		
+			<% @project.errors.full_messages.each do |msg| %>
+				<p class="alert alert-danger"><%= msg %></p>
+			<% end %>
+		
+	</div>
+<% end %>
+<%= form_for(@project) do |f| %>
+	
+  <div class=" form-group">
+    <%= f.label :name, class: 'control-label' %>
+    <div >
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+		<br />
+  <div class=" form-group">
+    <%= f.label :slug, class: ' control-label' %>
+    <div >
+      <%= f.text_field :slug, class: 'form-control' %>
+    </div>
+
+		<br />
+  <div class="field form-group">
+    <%= f.label :default_rate, class: 'control-label' %>
+    <div >
+      <%= f.text_field :default_rate, class: 'form-control' %>
+    </div>
+	<br />
+	<div class="field form-group">
+		<%= f.label :company_id, class: 'control-label' %>
+		<%= f.collection_select(:company_id, Company.all, :id, :name, {:prompt=>true}, {:class=>"form-control"}) %>
+	</div>
+	
+	<br />
+	<div class="actions form-group">
+		<%= f.submit @project.new_record? ? "Create Project" : "Update Project"  %>
+	</div>
+<% end %>

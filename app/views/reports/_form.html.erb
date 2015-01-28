@@ -1,0 +1,40 @@
+<% if @report.errors.any? %>
+	<div id="errors">
+		<p>Please correct the following <%= pluralize(@report.errors.count, "error") %>:</p>
+		
+			<% @report.errors.full_messages.each do |msg| %>
+				<p class="alert alert-danger"><%= msg %></p>
+			<% end %>
+		
+	</div>
+<% end %>
+<%= form_for(@report) do |f| %>
+	<div class="form-group">
+		<label><%= f.label :project_id %></label>
+		<%= f.collection_select(:project_id, Project.all, :id, :name, {:prompt=>true}, {:class=>"form-control"}) %>
+		
+	</div>
+	<div class="form-group">
+		<%= f.label :user_id %>
+		<%= f.collection_select(:user_id, User.all.order('lname, fname'), :id, :to_s,{:prompt=>true}, {:class=>"form-control"}) %>
+	</div>
+	<div class="form-group">
+		<%= f.label :datetimeperformed, 'Date & Time ' %>
+		<%= f.datetime_select :datetimeperformed, {:class=>"form-control"} %>
+	</div>
+	<div class="form-group">
+		<%= f.label :hours %>
+		<%= f.select(:hours, [1,2,3,4,5,6,7,8], {:prompt=>true}, {:class=>"form-control"}) %>
+	</div>
+	<div class="form-group">
+		<%= f.label :activity %>
+		 <div >
+      <%= f.text_field :activity, class: 'form-control' %>
+    </div>
+	</div>
+
+	
+	<div>
+		<%= f.submit @report.new_record? ? "Create Report" : "Update Report"  %>
+	</div>
+<% end %>

@@ -1,0 +1,17 @@
+<h1 class="page-header">Projects</h1>
+<h4> List of all the projects. </h4>
+<table class="table table-bordered table-hover" id="aks1">
+	<tbody>
+		<tr>
+			<th class="tab_head"> Projects </th>
+			<th style="text-align:center"> Company </th>
+		</tr>
+		
+			<%= render partial: "project", collection: @projects %>
+	
+	</tbody>
+</table>
+
+<% content_for :aside do%>
+	<% render 'sidebar' %>
+<% end %>

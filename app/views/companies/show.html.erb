@@ -1,0 +1,23 @@
+<h1 class="page-header"><%= @company.name %> </h1>
+<h4 style="text-align:right"><%= link_to 'Edit Company',edit_company_path %><h4>
+
+
+<% if @company.projects.size > 0 %>
+<table class="table table-bordered table-hover">
+	<tbody>
+		<tr>
+			<th class="tab_head"> Projects </th>
+			<th style="text-align:center"> Company </th>
+		</tr>
+		
+			<%= render partial: "projects/project", collection: @company.projects %>
+		</tr>
+	</tbody>
+</table>
+<% else %>
+<p> No projects </p>
+<% end %>
+
+<% content_for :aside do%>
+	<% render 'sidebar' %>
+<% end %>

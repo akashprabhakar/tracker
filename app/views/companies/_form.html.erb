@@ -1,0 +1,21 @@
+<% if @company.errors.any? %>
+	<div id="errors">
+		<p>Please correct the following <%= pluralize(@company.errors.count, "error") %>:</p>
+		
+			<% @company.errors.full_messages.each do |msg| %>
+				<p class="alert alert-danger"><%= msg %></p>
+			<% end %>
+		
+	</div>
+<% end %>
+<%= form_for(@company) do |f| %>
+	<div class=" form-group ">
+    <%= f.label :name, class: 'control-label'%>
+    <div >
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+<br>
+	<div>
+		<%= f.submit "Create Company", class: 'control-label' %>
+	</div>
+<% end %>

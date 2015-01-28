@@ -1,0 +1,13 @@
+<h1 class="page-header"><%= @report.datetimeperformed %></h1>
+
+<p> User : <%= @report.user.fname %> <%= @report.user.lname %></p>
+<p>Project : <%= @report.project.name %></p>
+<p>Hours : <%= @report.hours %></p>
+<p>Activity: <%= @report.activity %></p>
+
+<h4 style="text-align:right"><%= link_to 'Edit Report',edit_report_path %><h4>
+
+
+<% content_for :aside do%>
+	<% render 'sidebar' %>
+<% end %>

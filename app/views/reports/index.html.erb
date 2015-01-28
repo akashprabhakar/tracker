@@ -1,0 +1,20 @@
+<h1 class="page-header">Reports</h1>
+<h4> List of all the reports. </h4>
+<table class="table table-bordered table-hover" id="aks">
+	<tbody>
+		<tr>
+			<th> View </th>
+			<th> User </th>
+			<th> Project </th>
+			<th> Date/Time </th>
+			<th> Hours </th>
+		</tr>
+		
+		<%= render partial: "report", collection: @reports %>
+		
+	</tbody>
+</table>
+
+<% content_for :aside do%>
+	<% render 'sidebar' %>
+<% end %>
