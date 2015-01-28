@@ -25,3 +25,5 @@ test:
 production:
   <<: *default
   database: projtracker_production
+  username: postgres
+  password: annet123
